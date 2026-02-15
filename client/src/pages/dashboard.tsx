@@ -78,24 +78,43 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Skill Breakdown */}
-        <Card className="col-span-1 md:col-span-2 lg:col-span-1 border-border shadow-sm">
-          <CardHeader>
+
+
+        {/* Skill Breakdown - Radar Chart */}
+        <Card className="card-premium lg:col-span-2">
+          <CardHeader className="pb-2">
             <CardTitle className="font-serif text-xl">Skill Breakdown</CardTitle>
+            <CardDescription>Detailed analysis of your competencies</CardDescription>
           </CardHeader>
-          <CardContent className="h-[300px]">
+          <CardContent className="h-[340px] flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
-              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-                <PolarGrid stroke="hsl(var(--border))" />
-                <PolarAngleAxis dataKey="subject" tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+              <RadarChart data={data} margin={{ top: 20, right: 30, bottom: 20, left: 30 }}>
+                <PolarGrid
+                  stroke="hsl(var(--border))"
+                  strokeWidth={0.5}
+                  strokeOpacity={0.5}
+                />
+                <PolarAngleAxis
+                  dataKey="subject"
+                  tick={{
+                    fill: 'hsl(var(--muted-foreground))',
+                    fontSize: 13,
+                    fontFamily: 'Inter, sans-serif'
+                  }}
+                />
+                <PolarRadiusAxis
+                  angle={90}
+                  domain={[0, 100]}
+                  tick={false}
+                  axisLine={false}
+                />
                 <Radar
-                  name="Alex"
+                  name="Skill Level"
                   dataKey="A"
                   stroke="hsl(var(--primary))"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   fill="hsl(var(--primary))"
-                  fillOpacity={0.2}
+                  fillOpacity={0.15}
                 />
               </RadarChart>
             </ResponsiveContainer>
@@ -147,7 +166,7 @@ export default function Dashboard() {
               </div>
               <Progress value={60} className="h-2" />
             </div>
-            
+
             <div className="pt-4 border-t border-border">
               <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wide">Activity Log</p>
               <div className="flex justify-between items-center">
@@ -155,8 +174,8 @@ export default function Dashboard() {
                   <div key={i} className="flex flex-col items-center gap-2">
                     <div className={cn(
                       "w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium border transition-colors",
-                      [0, 1, 3, 4].includes(i) 
-                        ? "bg-primary text-primary-foreground border-primary" 
+                      [0, 1, 3, 4].includes(i)
+                        ? "bg-primary text-primary-foreground border-primary"
                         : "bg-background text-muted-foreground border-border"
                     )}>
                       {day}

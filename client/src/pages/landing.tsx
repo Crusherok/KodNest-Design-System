@@ -27,7 +27,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-24 md:py-32 px-6 flex-1 flex flex-col items-center justify-center text-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-muted/50 via-background to-background">
+      <section className="py-24 md:py-32 px-6 flex-1 flex flex-col items-center justify-center text-center bg-muted/30">
         <div className="max-w-3xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-sm text-muted-foreground shadow-sm">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
