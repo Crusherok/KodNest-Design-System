@@ -1,0 +1,5 @@
+# Netlify _redirects file
+# This ensures all routes are handled by the React app (Wouter router)
+# Prevents 404 errors for client-side routes
+
+/*    /index.html   200

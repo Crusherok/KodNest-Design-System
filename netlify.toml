@@ -1,0 +1,34 @@
+# Netlify Configuration for KodNest Placement Readiness Platform
+
+[build]
+  # Build command
+  command = "npm run build"
+  
+  # Output directory (where Vite outputs the built files)
+  publish = "dist/public"
+  
+  # Node version
+  [build.environment]
+    NODE_VERSION = "20"
+
+# SPA redirect - this fixes the 404 issue
+# All routes should be handled by the client-side router (Wouter)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Optional: Headers for better security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
